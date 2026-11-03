@@ -1,0 +1,336 @@
+\documentclass[a4paper,12pt]{article}
+% -------------------------------------------------
+% Configuração de página
+% -------------------------------------------------
+\usepackage[a4paper,top=3cm,bottom=2cm,left=3cm,right=2cm]{geometry}
+% -------------------------------------------------
+% Codificação e idioma
+% -------------------------------------------------
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[english,brazil]{babel}
+% -------------------------------------------------
+% Pacotes matemáticos e fontes
+% -------------------------------------------------
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amstext}
+\usepackage{mathptmx}
+% -------------------------------------------------
+% Formatação geral
+% -------------------------------------------------
+\usepackage{indentfirst}
+\usepackage{microtype}
+\usepackage{setspace}
+\onehalfspacing
+\setlength{\parindent}{1.25cm}
+\setlength{\parskip}{0pt}
+% -------------------------------------------------
+% Gráficos, tabelas e quadros
+% -------------------------------------------------
+\usepackage[table,xcdraw]{xcolor}
+\usepackage{graphicx}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.18}
+\usepackage{float}
+\usepackage{booktabs}
+\usepackage{array}
+\usepackage{tabularx}
+\usepackage{longtable}
+\usepackage{multirow}
+\usepackage{makecell}
+\usepackage{threeparttable}
+\usepackage[format=hang]{caption}
+\captionsetup[quadro]{justification=centering}
+% -------------------------------------------------
+% Quadros (ambiente próprio)
+% -------------------------------------------------
+\usepackage{tocloft}
+\floatstyle{plaintop}
+\newfloat{quadro}{htbp}{loq}
+\floatname{quadro}{Quadro}
+\newcommand{\listofquadros}{
+    \listof{quadro}{Lista de Quadros}
+}
+% -------------------------------------------------
+% Outros pacotes
+% -------------------------------------------------
+\usepackage{enumerate}
+\usepackage{nomencl}
+\usepackage{verbatim}
+\usepackage{hyperref}
+\usepackage[alf]{abntex2cite}
+\usepackage{tcolorbox}
+\usepackage{fancyhdr}
+\usepackage{appendix}
+\usepackage{multicol}
+\usepackage{adjustbox}
+\usepackage{wasysym}
+\usepackage{pdflscape}
+\newcommand{\fonte}[1]{\par\noindent\footnotesize Fonte: #1}
+\newcommand{\nota}[1]{\par\noindent\footnotesize Nota: #1}
+\newcommand{\celula}[1]{\makecell[l]{#1}}
+% -------------------------------------------------
+% Listagem de código-fonte
+% -------------------------------------------------
+\usepackage{listings}
+\renewcommand{\lstlistingname}{Código}
+\renewcommand{\lstlistlistingname}{Lista de Códigos}
+% -------------------------------------------------
+% Acentuação em listagens
+% -------------------------------------------------
+\lstset{
+    basicstyle=\ttfamily\small,
+    numbers=left,
+    numberstyle=\tiny,
+    stepnumber=1,
+    numbersep=8pt,
+    frame=single,
+    breaklines=true,
+    tabsize=4,
+    showstringspaces=false,
+    captionpos=b,
+    keywordstyle=\color{blue},
+    commentstyle=\color{green!50!black},
+    stringstyle=\color{red!70!black},
+    literate=
+      {á}{{\\'a}}1 {à}{{\\\`a}}1 {ã}{{\\\~a}}1 {â}{{\\^a}}1
+      {é}{{\\'e}}1 {ê}{{\\^e}}1
+      {í}{{\\'i}}1
+      {ó}{{\\'o}}1 {õ}{{\\\~o}}1 {ô}{{\\^o}}1
+      {ú}{{\\'u}}1
+      {ç}{{\c{c}}}1
+      {Á}{{\\'A}}1 {À}{{\\\`A}}1 {Ã}{{\\\~A}}1 {Â}{{\\^A}}1
+      {É}{{\\'E}}1 {Ê}{{\\^E}}1
+      {Í}{{\\'I}}1
+      {Ó}{{\\'O}}1 {Õ}{{\\\~O}}1 {Ô}{{\\^O}}1
+      {Ú}{{\\'U}}1
+      {Ç}{{\c{C}}}1
+}
+
+\hypersetup{
+    hidelinks,
+    pdfborder={0 0 0}
+}
+
+% -------------------------------------------------
+% Documento
+% -------------------------------------------------
+\begin{document}
+% -------------------------------------------------
+% Folha de rosto
+% -------------------------------------------------
+\begin{titlepage}
+    \thispagestyle{empty}
+    \begin{center}
+        % Logos
+        \begin{minipage}{0.22\textwidth}
+            \centering
+            \includegraphics[width=0.9\linewidth]{figuras/ufs\_logo.png}
+        \end{minipage}
+        \hspace{1.5cm}
+        \begin{minipage}{0.22\textwidth}
+            \centering
+            \includegraphics[width=0.9\linewidth]{figuras/ppgdem\_logo.png}
+        \end{minipage}
+        \par
+        \vspace{1.2cm}
+        % Instituições
+        {\large UNIVERSIDADE FEDERAL DE SERGIPE\par}
+        {\large UNIVERSIDADE FEDERAL DO RIO GRANDE DO NORTE\par}
+        \vspace{0.5cm}
+        {\large PROGRAMA DE PÓS-GRADUAÇÃO EM DEMOGRAFIA\par}
+        {\large DOUTORADO INTERINSTITUCIONAL EM POPULAÇÃO,\par}
+        {\large ESTATÍSTICAS SOCIAIS E POLÍTICAS PÚBLICAS\par}
+        \vspace{3cm}
+        % Nome do aluno
+        {\large \textbf{Andrés Ignácio Martínez Menéndez}\par}
+        \vspace{3cm}
+        % Título
+        {\Large \textbf{Componentes da Dinâmica Demográfica}\par}
+        \vspace{0.6cm}
+        {\large Laboratório de Análise de Dados Demográficos\par}
+        \vfill
+        % Local e data
+        {\small Aracaju (SE)\par}
+        {\small Novembro de 2026\par}
+    \end{center}
+\end{titlepage}
+\clearpage
+
+% -------------------------------------------------
+% Sumário
+% -------------------------------------------------
+\renewcommand{\contentsname}{\centering SUMÁRIO}
+\tableofcontents
+\thispagestyle{empty}
+\clearpage
+
+\pagenumbering{arabic}
+
+
+\section{Introdução}
+
+O Censo Demográfico constitui uma fonte central para descrever as condições de vida e a composição da população brasileira em diferentes escalas territoriais. Seus dados permitem examinar, além do tamanho e da estrutura por sexo e idade, dimensões relacionadas ao trabalho, à educação, aos rendimentos e às condições dos domicílios. A divulgação de informações para os municípios torna possível observar desigualdades que podem ficar encobertas por indicadores agregados para o estado ou para o país \cite{ibge2022censo}.
+
+Este trabalho analisa indicadores sociodemográficos dos municípios de Sergipe com base nos microdados do Censo Demográfico 2022. Na dimensão populacional, são estimadas a razão de sexo, a taxa de desocupação, a taxa de analfabetismo entre pessoas de 15 a 64 anos e as médias e participações relativas dos rendimentos do trabalho e de outras fontes. Também se examina como esses indicadores variam entre os municípios e como se associam à participação de ocupações do setor primário. A razão de sexo é tratada como uma medida da composição da população; sua distribuição municipal, por si só, não permite atribuir diferenças observadas exclusivamente à migração.
+
+Na dimensão domiciliar, o estudo descreve a proporção de domicílios cuja pessoa responsável é mulher, a renda domiciliar per capita segundo o sexo dessa pessoa e as diferenças de renda entre os grupos. São examinadas ainda as condições de acesso à água canalizada, ao esgotamento sanitário e à internet. As estimativas são organizadas por município, permitindo identificar contrastes territoriais e discutir em que medida os padrões observados se relacionam com as condições de trabalho e renda.
+
+O objetivo é construir um retrato comparativo das condições demográficas, econômicas e domiciliares dos municípios sergipanos, articulando indicadores e associações estatísticas sugeridas pelo exercício. Os resultados descrevem relações observadas nos dados censitários de 2022 e não devem ser interpretados, isoladamente, como evidência de causalidade. Após a apresentação dos dados e procedimentos, o texto discute os indicadores demográficos e, em seguida, os indicadores domiciliares, encerrando com uma síntese dos principais achados.
+
+
+\section{Resultados}
+
+\subsection{Indicadores demográficos}
+
+\subsubsection{Razão de sexo: municípios com maior predominância masculina e feminina (item 1a)}
+
+A razão de sexo foi calculada como o número de homens para cada 100 mulheres. Valores superiores a 100 indicam predominância masculina, enquanto valores inferiores a 100 indicam predominância feminina. A Tabela~\ref{tab:razao-sexo-top10} apresenta os dez municípios com maior predominância de cada sexo.
+
+\input{resultados/item_1a_top10_razao_sexo.tex}
+
+\subsubsection{Razão de sexo e participação do setor primário (item 1b)}
+
+Para avaliar se os municípios com menor razão de sexo são também aqueles mais baseados em atividades do setor primário, comparamos a razão de sexo municipal com a proporção de pessoas ocupadas cuja atividade principal pertence à agricultura, pecuária, produção florestal, pesca e aquicultura. A Figura~\ref{fig:razao-sexo-setor-primario} mostra a distribuição dos municípios e a tendência linear; o resultado da correlação de Pearson é apresentado a seguir.
+
+\input{resultados/item_1b_resultado.tex}
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=0.9\textwidth]{resultados/item_1b_dispersao.png}
+    \caption{Razão de sexo e proporção de ocupados no setor primário por município, Sergipe, 2022}
+    \label{fig:razao-sexo-setor-primario}
+    \fonte{Elaboração própria com base nos microdados do Censo Demográfico 2022.}
+    \nota{A linha representa o ajuste linear e a faixa sombreada, seu intervalo de confiança de 95\%.}
+\end{figure}
+
+\subsection{Desocupação e nível de ocupação (item 2)}
+
+Para estimar a taxa de desocupação, consideramos as pessoas de 14 anos ou mais na força de trabalho (P0930 = 1). Nesse grupo, a categoria registrada como “não ocupada” em P0950 corresponde à pessoa desocupada: não tinha trabalho na semana de referência, tomou providências para consegui-lo no mês de referência e estava disponível para assumi-lo na semana de referência. Assim, a taxa de desocupação tem como denominador a força de trabalho, formada por ocupados e desocupados.
+
+Essa medida não deve ser confundida com a proporção de pessoas não ocupadas. A categoria “não ocupada” também abrange pessoas fora da força de trabalho, que não estavam trabalhando nem procurando trabalho. Para representar o nível de ocupação, calculamos a proporção de pessoas ocupadas entre a população de 14 anos ou mais (P0920 = 1), usando P0960. Portanto, a taxa de ocupação e a taxa de desocupação têm denominadores diferentes e não são complementares \cite{ibgedicmicrodados2022}.
+
+\input{resultados/item_2a_top3_taxas_desocupacao.tex}
+\input{resultados/item_2a_resultado.tex}
+
+\subsubsection{Nível de ocupação e participação do setor primário}
+
+Comparamos a taxa de ocupação da população de 14 anos ou mais com a proporção de ocupados no setor primário, estimada a partir da atividade principal informada em P1030. A Figura~\ref{fig:item2-ocupacao-setor-primario} mostra a distribuição municipal e a tendência linear; o coeficiente de Pearson resume a associação entre os indicadores.
+
+\input{resultados/item_2b_resultado.tex}
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=0.9\textwidth]{resultados/item_2b_ocupacao_setor_primario.png}
+    \caption{Taxa de ocupação e proporção de ocupados no setor primário por município, Sergipe, 2022}
+    \label{fig:item2-ocupacao-setor-primario}
+    \fonte{Elaboração própria com base nos microdados do Censo Demográfico 2022.}
+    \nota{A linha representa o ajuste linear e a faixa sombreada, seu intervalo de confiança de 95\%.}
+\end{figure}
+
+\clearpage
+
+\subsection{Taxa de analfabetismo (item 3)}
+
+Estimamos a taxa de analfabetismo entre as pessoas de 15 a 64 anos, considerando analfabeta a pessoa cuja resposta a P0640 foi “Não”. No Censo, alfabetização corresponde à capacidade de ler e escrever um bilhete simples no idioma conhecido. A Tabela~\ref{tab:item3-analfabetismo} apresenta os três municípios com taxas mais altas e mais baixas, além da estimativa ponderada para o conjunto de Sergipe \cite{ibgedicmicrodados2022}.
+
+\input{resultados/item_3_resultado.tex}
+\input{resultados/item_3_top3_taxa_analfabetismo.tex}
+
+\subsection{Rendimento por fonte (itens 4a e 4b)}
+
+Para os itens 4a e 4b, usamos as médias municipais de rendimento do trabalho (P1080), de transferências e outras fontes (P1100) e do rendimento total (P1110), conforme calculadas no script. A Tabela~\ref{tab:item4-renda-fontes} resume os três municípios com maiores e menores médias de rendimento total e apresenta a participação percentual do trabalho e das transferências nesse total. A relação entre o rendimento de outras fontes e o rendimento total é ilustrada na Figura~\ref{fig:item4-renda-transferencias}.
+
+\input{resultados/item_4_resultado.tex}
+\input{resultados/item_4_renda_fonte_top_bottom.tex}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.85\textwidth]{resultados/item_4b_renda_transferencias_total.png}
+    \caption{Rendimento médio total e rendimento médio de transferências e outras fontes por município, Sergipe, 2022}
+    \label{fig:item4-renda-transferencias}
+    \fonte{Elaboração própria com base nos microdados do Censo Demográfico 2022.}
+    \nota{A linha representa o ajuste linear e a faixa sombreada, seu intervalo de confiança de 95\%.}
+\end{figure}
+
+\subsection{Participação de outras fontes de renda (item 5)}
+
+\input{resultados/item_5_resultado.tex}
+\input{resultados/item_5_top3_outras_fontes.tex}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.85\textwidth]{resultados/item_5_total_participacao_outras_fontes.png}
+    \caption{Rendimento médio total e participação de outras fontes por município, Sergipe, 2022}
+    \label{fig:item5-total-participacao}
+    \fonte{Elaboração própria com base nos microdados do Censo Demográfico 2022.}
+    \nota{A linha representa o ajuste linear e a faixa sombreada, seu intervalo de confiança de 95\%.}
+\end{figure}
+
+\subsection{Características domiciliares e habitacionais}
+
+\subsubsection{Proporção de domicílios chefiados por mulher (item 2.1)}
+
+\input{resultados/item_2_1_resultado.tex}
+\input{resultados/item_2_1_dom_chefe_mulher.tex}
+
+\subsubsection{Renda domiciliar per capita por sexo da pessoa responsável (item 2.2)}
+
+\input{resultados/item_2_2_resultado.tex}
+\input{resultados/item_2_2_rdpc_por_sexo.tex}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.9\textwidth]{resultados/item_2_2_rdpc_seis_municipios.png}
+    \caption{Renda domiciliar per capita por sexo da pessoa responsável nos seis municípios selecionados, Sergipe, 2022}
+    \label{fig:item2-2-rdpc-seis}
+    \fonte{Elaboração própria com base nos microdados do Censo Demográfico 2022.}
+    \nota{Os pontos estão ligados por município. As linhas tracejadas indicam as médias estaduais de cada grupo.}
+\end{figure}
+
+\subsubsection{Municípios com menor renda em domicílios com responsável mulher (item 2.3)}
+
+\input{resultados/item_2_3_resultado.tex}
+\input{resultados/item_2_3_dez_menores_rdpc_chefe_mulher.tex}
+
+\subsubsection{Maiores hiatos de renda domiciliar per capita (item 2.4)}
+
+\input{resultados/item_2_4_resultado.tex}
+\input{resultados/item_2_4_top10_maiores_hiatos_rdpc.tex}
+
+\subsubsection{Água encanada até dentro da moradia (item 2.5)}
+
+\input{resultados/item_2_5_resultado.tex}
+\input{resultados/item_2_5_dez_menores_agua_encanada.tex}
+
+\subsubsection{Esgotamento sanitário inadequado (item 2.6)}
+
+\input{resultados/item_2_6_resultado.tex}
+\input{resultados/item_2_6_esgotamento_inadequado.tex}
+
+\subsubsection{Internet e esgotamento sanitário (item 2.7)}
+
+\input{resultados/item_2_7_resultado.tex}
+\input{resultados/item_2_7_internet_esgoto.tex}
+
+
+\section{Considerações finais}
+
+Os resultados mostram desigualdades municipais nas dimensões demográfica, econômica e domiciliar. A taxa de desocupação variou de 2,38\% a 19,59\%, e a taxa de analfabetismo das pessoas de 15 a 64 anos foi de 9,01\% no estado. As correlações entre razão de sexo, participação do setor primário e ocupação descrevem padrões territoriais, mas não estabelecem causalidade.
+
+Quanto à renda, a média domiciliar per capita nos domicílios com responsável homem foi 30,19\% maior que nos domicílios com responsável mulher. A participação de outras fontes foi relativamente maior nos municípios com menor rendimento total; porém, P1100 reúne aposentadorias, pensões, benefícios sociais e outras rendas, sem permitir atribuir esse padrão a um componente específico.
+
+Nas condições domiciliares, 93,02\% dos domicílios tinham água encanada dentro da moradia e 32,96\% foram classificados com esgotamento inadequado. Em 64 dos 75 municípios, a cobertura de internet superou a de esgotamento adequado. Os serviços têm modos distintos de provisão: a família pode contratar internet onde há cobertura, enquanto expandir a rede coletora exige infraestrutura coletiva e investimento público. Além disso, o critério de esgotamento adequado inclui fossa séptica ou fossa-filtro não ligada à rede, portanto não mede apenas o alcance da rede coletora.
+
+Em conjunto, a análise oferece um retrato comparativo das condições de vida nos municípios sergipanos. As estimativas descrevem o contexto de 2022: correlações municipais não demonstram causalidade, e diferenças agregadas não revelam escolhas individuais das famílias.
+
+
+\renewcommand{\refname}{\centering REFERÊNCIAS}
+
+{\singlespacing
+\clearpage
+\bibliography{references}
+\addcontentsline{toc}{section}{REFERÊNCIAS}
+}
+\end{document}

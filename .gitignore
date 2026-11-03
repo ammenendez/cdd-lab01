@@ -1,0 +1,15 @@
+# Arquivos temporários do macOS e do R
+.DS_Store
+.RData
+.Rhistory
+
+# Arquivos auxiliares gerados pelo LaTeX
+*.aux
+*.bbl
+*.blg
+*.fdb_latexmk
+*.fls
+*.log
+*.out
+*.synctex.gz
+*.toc
