@@ -166,6 +166,16 @@
 \thispagestyle{empty}
 \clearpage
 
+\renewcommand{\listfigurename}{\centering LISTA DE FIGURAS}
+\listoffigures
+\thispagestyle{empty}
+\clearpage
+
+\renewcommand{\listtablename}{\centering LISTA DE TABELAS}
+\listoftables
+\thispagestyle{empty}
+\clearpage
+
 \pagenumbering{arabic}
 
 
@@ -177,20 +187,20 @@ Este trabalho analisa indicadores sociodemográficos dos municípios de Sergipe 
 
 Na dimensão domiciliar, o estudo descreve a proporção de domicílios cuja pessoa responsável é mulher, a renda domiciliar per capita segundo o sexo dessa pessoa e as diferenças de renda entre os grupos. São examinadas ainda as condições de acesso à água canalizada, ao esgotamento sanitário e à internet. As estimativas são organizadas por município, permitindo identificar contrastes territoriais e discutir em que medida os padrões observados se relacionam com as condições de trabalho e renda.
 
-O objetivo é construir um retrato comparativo das condições demográficas, econômicas e domiciliares dos municípios sergipanos, articulando indicadores e associações estatísticas sugeridas pelo exercício. Os resultados descrevem relações observadas nos dados censitários de 2022 e não devem ser interpretados, isoladamente, como evidência de causalidade. Após a apresentação dos dados e procedimentos, o texto discute os indicadores demográficos e, em seguida, os indicadores domiciliares, encerrando com uma síntese dos principais achados.
+O objetivo é construir um retrato comparativo das condições demográficas, econômicas e domiciliares dos municípios sergipanos, articulando indicadores e associações estatísticas sugeridas pelo trabalho da disciplina. Os resultados descrevem relações observadas nos dados censitários de 2022 e não devem ser interpretados, isoladamente, como evidência de causalidade. Após a apresentação dos dados e procedimentos, o texto discute os indicadores demográficos e, em seguida, os indicadores domiciliares, encerrando com uma síntese dos principais achados.
 
 
 \section{Resultados}
 
 \subsection{Indicadores demográficos}
 
-\subsubsection{Razão de sexo: municípios com maior predominância masculina e feminina (item 1a)}
+\subsubsection{Razão de sexo: municípios com maior predominância masculina e feminina}
 
 A razão de sexo foi calculada como o número de homens para cada 100 mulheres. Valores superiores a 100 indicam predominância masculina, enquanto valores inferiores a 100 indicam predominância feminina. A Tabela~\ref{tab:razao-sexo-top10} apresenta os dez municípios com maior predominância de cada sexo.
 
 \input{resultados/item_1a_top10_razao_sexo.tex}
 
-\subsubsection{Razão de sexo e participação do setor primário (item 1b)}
+\subsubsection{Razão de sexo e participação do setor primário}
 
 Para avaliar se os municípios com menor razão de sexo são também aqueles mais baseados em atividades do setor primário, comparamos a razão de sexo municipal com a proporção de pessoas ocupadas cuja atividade principal pertence à agricultura, pecuária, produção florestal, pesca e aquicultura. A Figura~\ref{fig:razao-sexo-setor-primario} mostra a distribuição dos municípios e a tendência linear; o resultado da correlação de Pearson é apresentado a seguir.
 
@@ -205,7 +215,7 @@ Para avaliar se os municípios com menor razão de sexo são também aqueles mai
     \nota{A linha representa o ajuste linear e a faixa sombreada, seu intervalo de confiança de 95\%.}
 \end{figure}
 
-\subsection{Desocupação e nível de ocupação (item 2)}
+\subsection{Desocupação e nível de ocupação}
 
 Para estimar a taxa de desocupação, consideramos as pessoas de 14 anos ou mais na força de trabalho (P0930 = 1). Nesse grupo, a categoria registrada como “não ocupada” em P0950 corresponde à pessoa desocupada: não tinha trabalho na semana de referência, tomou providências para consegui-lo no mês de referência e estava disponível para assumi-lo na semana de referência. Assim, a taxa de desocupação tem como denominador a força de trabalho, formada por ocupados e desocupados.
 
@@ -229,18 +239,18 @@ Comparamos a taxa de ocupação da população de 14 anos ou mais com a proporç
     \nota{A linha representa o ajuste linear e a faixa sombreada, seu intervalo de confiança de 95\%.}
 \end{figure}
 
-\clearpage
 
-\subsection{Taxa de analfabetismo (item 3)}
+
+\subsection{Taxa de analfabetismo}
 
 Estimamos a taxa de analfabetismo entre as pessoas de 15 a 64 anos, considerando analfabeta a pessoa cuja resposta a P0640 foi “Não”. No Censo, alfabetização corresponde à capacidade de ler e escrever um bilhete simples no idioma conhecido. A Tabela~\ref{tab:item3-analfabetismo} apresenta os três municípios com taxas mais altas e mais baixas, além da estimativa ponderada para o conjunto de Sergipe \cite{ibgedicmicrodados2022}.
 
 \input{resultados/item_3_resultado.tex}
 \input{resultados/item_3_top3_taxa_analfabetismo.tex}
 
-\subsection{Rendimento por fonte (itens 4a e 4b)}
+\subsection{Rendimento por fonte}
 
-Para os itens 4a e 4b, usamos as médias municipais de rendimento do trabalho (P1080), de transferências e outras fontes (P1100) e do rendimento total (P1110), conforme calculadas no script. A Tabela~\ref{tab:item4-renda-fontes} resume os três municípios com maiores e menores médias de rendimento total e apresenta a participação percentual do trabalho e das transferências nesse total. A relação entre o rendimento de outras fontes e o rendimento total é ilustrada na Figura~\ref{fig:item4-renda-transferencias}.
+Para os itens 4a e 4b do laboratório, usamos as médias municipais de rendimento do trabalho (P1080), de transferências e outras fontes (P1100) e do rendimento total (P1110). A Tabela~\ref{tab:item4-renda-fontes} resume os três municípios com maiores e menores médias de rendimento total e apresenta a participação percentual do trabalho e das transferências nesse total. A relação entre o rendimento de outras fontes e o rendimento total é ilustrada na Figura~\ref{fig:item4-renda-transferencias}.
 
 \input{resultados/item_4_resultado.tex}
 \input{resultados/item_4_renda_fonte_top_bottom.tex}
@@ -254,7 +264,7 @@ Para os itens 4a e 4b, usamos as médias municipais de rendimento do trabalho (P
     \nota{A linha representa o ajuste linear e a faixa sombreada, seu intervalo de confiança de 95\%.}
 \end{figure}
 
-\subsection{Participação de outras fontes de renda (item 5)}
+\subsection{Participação de outras fontes de renda}
 
 \input{resultados/item_5_resultado.tex}
 \input{resultados/item_5_top3_outras_fontes.tex}
@@ -270,12 +280,12 @@ Para os itens 4a e 4b, usamos as médias municipais de rendimento do trabalho (P
 
 \subsection{Características domiciliares e habitacionais}
 
-\subsubsection{Proporção de domicílios chefiados por mulher (item 2.1)}
+\subsubsection{Proporção de domicílios chefiados por mulher}
 
 \input{resultados/item_2_1_resultado.tex}
 \input{resultados/item_2_1_dom_chefe_mulher.tex}
 
-\subsubsection{Renda domiciliar per capita por sexo da pessoa responsável (item 2.2)}
+\subsubsection{Renda domiciliar per capita por sexo da pessoa responsável}
 
 \input{resultados/item_2_2_resultado.tex}
 \input{resultados/item_2_2_rdpc_por_sexo.tex}
@@ -289,27 +299,27 @@ Para os itens 4a e 4b, usamos as médias municipais de rendimento do trabalho (P
     \nota{Os pontos estão ligados por município. As linhas tracejadas indicam as médias estaduais de cada grupo.}
 \end{figure}
 
-\subsubsection{Municípios com menor renda em domicílios com responsável mulher (item 2.3)}
+\subsubsection{Municípios com menor renda em domicílios com responsável mulher}
 
 \input{resultados/item_2_3_resultado.tex}
 \input{resultados/item_2_3_dez_menores_rdpc_chefe_mulher.tex}
 
-\subsubsection{Maiores hiatos de renda domiciliar per capita (item 2.4)}
+\subsubsection{Maiores hiatos de renda domiciliar per capita}
 
 \input{resultados/item_2_4_resultado.tex}
 \input{resultados/item_2_4_top10_maiores_hiatos_rdpc.tex}
 
-\subsubsection{Água encanada até dentro da moradia (item 2.5)}
+\subsubsection{Água encanada até dentro da moradia}
 
 \input{resultados/item_2_5_resultado.tex}
 \input{resultados/item_2_5_dez_menores_agua_encanada.tex}
 
-\subsubsection{Esgotamento sanitário inadequado (item 2.6)}
+\subsubsection{Esgotamento sanitário inadequado}
 
 \input{resultados/item_2_6_resultado.tex}
 \input{resultados/item_2_6_esgotamento_inadequado.tex}
 
-\subsubsection{Internet e esgotamento sanitário (item 2.7)}
+\subsubsection{Internet e esgotamento sanitário}
 
 \input{resultados/item_2_7_resultado.tex}
 \input{resultados/item_2_7_internet_esgoto.tex}
@@ -319,7 +329,7 @@ Para os itens 4a e 4b, usamos as médias municipais de rendimento do trabalho (P
 
 Os resultados mostram desigualdades municipais nas dimensões demográfica, econômica e domiciliar. A taxa de desocupação variou de 2,38\% a 19,59\%, e a taxa de analfabetismo das pessoas de 15 a 64 anos foi de 9,01\% no estado. As correlações entre razão de sexo, participação do setor primário e ocupação descrevem padrões territoriais, mas não estabelecem causalidade.
 
-Quanto à renda, a média domiciliar per capita nos domicílios com responsável homem foi 30,19\% maior que nos domicílios com responsável mulher. A participação de outras fontes foi relativamente maior nos municípios com menor rendimento total; porém, P1100 reúne aposentadorias, pensões, benefícios sociais e outras rendas, sem permitir atribuir esse padrão a um componente específico.
+Quanto à renda, observa-se desigualdade de gênero: a renda domiciliar per capita média nos domicílios com responsável homem foi 30,19\% maior que nos domicílios com responsável mulher. A participação de outras fontes foi relativamente maior nos municípios com menor rendimento total; porém, P1100 reúne aposentadorias, pensões, benefícios sociais e outras rendas, sem permitir atribuir esse padrão a um componente específico.
 
 Nas condições domiciliares, 93,02\% dos domicílios tinham água encanada dentro da moradia e 32,96\% foram classificados com esgotamento inadequado. Em 64 dos 75 municípios, a cobertura de internet superou a de esgotamento adequado. Os serviços têm modos distintos de provisão: a família pode contratar internet onde há cobertura, enquanto expandir a rede coletora exige infraestrutura coletiva e investimento público. Além disso, o critério de esgotamento adequado inclui fossa séptica ou fossa-filtro não ligada à rede, portanto não mede apenas o alcance da rede coletora.
 

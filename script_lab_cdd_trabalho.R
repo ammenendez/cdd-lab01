@@ -1,7 +1,8 @@
 ###########################################################
 ### Script que lê o Censo Demográfico 2022 - Domicílio ####
-### Data: 14 de setembro de 2022   ########################
-### Nome: Kleber Oliveira  ################################
+### Data: 31 de outubro de 2022    ########################
+### Nome: Andrés Ignácio Martínez Menéndez ################
+### Baseado no script de Kleber Oliveira ##################
 ###########################################################
 
 
@@ -321,12 +322,20 @@ writeLines(
 
 maior_tx_desocup <- taxa_desocupacao_municipal %>% slice_max(txdesocup, n = 1)
 menor_tx_desocup <- taxa_desocupacao_municipal %>% slice_min(txdesocup, n = 1)
+tx_desocup_estado <- svymean(
+  ~I(P0950 == "Desocupada"),
+  design = subset(cd_dompes2022_id_design, P0930 == 1),
+  na.rm = TRUE
+)
+taxa_desocup_estado <- unname(coef(tx_desocup_estado)[2])
 texto_2a <- paste0(
   "A Tabela~\\ref{tab:item2-taxa-desocupacao} destaca os três municípios com maiores e menores taxas. No conjunto dos municípios, a taxa de desocupação variou de ",
   formata_razao(100 * menor_tx_desocup$txdesocup),
   "\\% em ", escapa_latex(menor_tx_desocup$Munic), " a ",
   formata_razao(100 * maior_tx_desocup$txdesocup), "\\% em ",
-  escapa_latex(maior_tx_desocup$Munic), "."
+  escapa_latex(maior_tx_desocup$Munic),
+  ". Para Sergipe, a estimativa estadual foi de ",
+  formata_razao(100 * taxa_desocup_estado), "\\%."
 )
 writeLines(
   texto_2a,
@@ -912,9 +921,9 @@ texto_2_2 <- paste0(
   formata_razao(rdpc_estadual_masculino),
   " naqueles com responsável homem. A diferença é de R\\$ ",
   formata_razao(diferenca_rdpc_estadual),
-  ", e a média dos domicílios com responsável homem é ",
+  ", evidenciando desigualdade de gênero na renda: a média dos domicílios com responsável homem é ",
   formata_razao(percentual_diferenca_rdpc_estadual),
-  "\\% maior. A Tabela~\\ref{tab:item2-2-rdpc-sexo} apresenta, para os três municípios com maiores e menores médias de renda no grupo com responsável mulher, as médias dos dois grupos. A Figura~\\ref{fig:item2-2-rdpc-seis} compara esses mesmos municípios e marca as médias estaduais. O arquivo CSV em resultados contém as estimativas dos 75 municípios."
+  "\\% maior. A Tabela~\\ref{tab:item2-2-rdpc-sexo} apresenta, para os três municípios com maiores e menores médias de renda no grupo com responsável mulher, as médias dos dois grupos. A Figura~\\ref{fig:item2-2-rdpc-seis} compara esses mesmos municípios e marca as médias estaduais."
 )
 writeLines(texto_2_2, file.path(resultados_dir, "item_2_2_resultado.tex"), useBytes = TRUE)
 
@@ -1155,7 +1164,7 @@ texto_2_5 <- paste0(
   "\\% dos domicílios tinham água encanada até dentro da moradia. A Tabela~\\ref{tab:item2-5-agua-encanada} apresenta os dez municípios com menores proporções, do menor para o maior. O menor percentual foi de ",
   formata_razao(dez_menores_agua_encanada$com[1]),
   "\\% em ", escapa_latex(dez_menores_agua_encanada$Munic[1]),
-  ". O CSV em resultados reúne as estimativas para os 75 municípios."
+  "."
 )
 writeLines(texto_2_5, file.path(resultados_dir, "item_2_5_resultado.tex"), useBytes = TRUE)
 
@@ -1347,7 +1356,7 @@ linhas_tabela_2_7 <- c(
 writeLines(linhas_tabela_2_7, file.path(resultados_dir, "item_2_7_internet_esgoto.tex"), useBytes = TRUE)
 
 texto_2_7 <- paste0(
-  "Sim. Em ", nrow(municipios_internet_supera), " dos 75 municípios, a proporção de domicílios com acesso à internet (D0330 igual a 1) supera a proporção com esgotamento considerado adequado pelo critério do exercício, que classifica como adequados os valores da variável D0250 até 3. Em Sergipe, as proporções são de ",
+  "O laboratório deseja saber se a proporção de domicílios com acesso à internet supera a proporção com esgotamento sanitário adequado nos municípios de Sergipe. A resposta é sim: em ", nrow(municipios_internet_supera), " dos 75 municípios, a proporção de domicílios com acesso à internet (D0330 igual a 1) supera a proporção com esgotamento considerado adequado pelo critério do exercício, que classifica como adequados os valores da variável D0250 até 3. Em Sergipe, as proporções são de ",
   formata_razao(prop_estadual_internet), "\\% para internet e ",
   formata_razao(prop_estadual_esgoto_adequado), "\\% para esgotamento adequado, diferença de ",
   formata_razao(diferenca_estadual_internet_esgoto), " pontos percentuais. A Tabela~\\ref{tab:item2-7-internet-esgoto} mostra os municípios com as maiores diferenças positivas e aqueles em que as proporções são mais próximas, mas ainda há mais cobertura de internet. Há também diferenças no modo de provisão: a família pode contratar internet de um provedor quando existe cobertura; já ampliar a rede coletora de esgoto até as residências exige infraestrutura coletiva e decisões de planejamento e investimento público. Além disso, o critério adotado considera adequada a fossa séptica ou fossa-filtro não ligada à rede (valor 3 de D0250), de modo que a medida não representa apenas o alcance da rede coletora. O contraste evidencia desigualdade territorial entre serviços essenciais, mas os dados agregados por município não permitem concluir que as famílias tenham escolhido internet em vez de saneamento."
